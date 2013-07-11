@@ -18,8 +18,7 @@ static bool mhash_mt(const struct sk_buff *skb, const struct xt_match_param *par
     //                "bucket size=%d, value=%d\n",
     //                info->hash_bucket,info->hash_value);
 
-    if(info->flags && abs(ntohl(iph->daddr) % BUCKET_SIZE) == info->mvalue) {
-        printk(KERN_INFO "xt_mhash: %d\n",ntohl(iph->saddr));
+    if(abs(ntohl(iph->daddr) % BUCKET_SIZE) == info->mvalue) {
         return true;
     }
     return false;
