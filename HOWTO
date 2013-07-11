@@ -1,0 +1,12 @@
+Install:
+1. download iptables source code which your used version,such as iptables-1.4.7.tar.bz2.
+2. mv userspace/libxt_mhash.c into iptables' extensions dictory.
+3. mv userspace/xt_mhash.h into /usr/include/linux/netfilter.
+4. ./configure && make
+5. cp extensions/libxt_mhash.so /lib64/xtables-x.x.x
+
+6. cp /usr/include/linux/netfilter/xt_mhash.h /usr/src/kernel/`uname -r`/include/linux/netfilter.
+7. go to mhash/kernel dictory and do:
+   make -C /usr/src/kernel/`uname -r` M=$PWD modules
+8. cp xt_mhash.ko /lib/modules/`uname -r`/kernel/net/netfilter
+9. insmod xt_mhash.ko
